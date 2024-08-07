@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground box-border;
+  }
+}
+.BoxCards {
+  box-shadow: inset 0 0 12px 4px rgba(255, 255, 255, 0.05);
+}
+@layer utilities {
+  .CardStyle {
+    @apply border border-black/20 dark:border-white/15 dark:bg-gradient-to-t dark:from-white/5 dark:shadow-[0_0_12px_4px_rgba(0,0,0,0.05)_inset] dark:shadow-[0_0_12px_4px_rgba(255,255,255,0.05)_inset];
+  }
+  .ButtonStyle {
+    @apply border border-black/20 dark:border-white/15 bg-gradient-to-r from-black/10 dark:from-white/5 rounded-xl shadow-[0_0_12px_4px_rgba(0,0,0,0.05)_inset] dark:shadow-[0_0_12px_4px_rgba(255,255,255,0.05)_inset];
+  }
+  .borderStyle {
+    @apply border border-black/20 dark:border-white/10;
+  }
+  .textHover {
+    @apply hover:text-lime-600 dark:hover:text-lime-400 transitionAll;
+  }
+  .transitionAll {
+    @apply transition-all ease-linear duration-150;
+  }
+}
