@@ -1,0 +1,42 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions", "prismaSchemaFolder"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Notification {
+  id          String    @id @default(uuid())
+  title       String
+  description String
+  status      String
+  userId      String
+  workspaceId String
+  spaceId     String
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  space       Space     @relation(fields: [spaceId], references: [id], onDelete: Cascade)
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, workspaceId, spaceId])
+}
+
+model Invitation {
+  id          String           @id @default(uuid())
+  email       String           @unique
+  role        Role             @default(USER)
+  created_at  DateTime         @default(now())
+  updated_at  DateTime         @updatedAt
+  workspaceId String
+  spaceId     String
+  status      InvitationStatus @default(PENDING)
+  workspace   Workspace        @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  space       Space            @relation(fields: [spaceId], references: [id], onDelete: Cascade)
+
+  @@index([workspaceId, spaceId])
+}

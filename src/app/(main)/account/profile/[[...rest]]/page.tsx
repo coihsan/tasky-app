@@ -3,7 +3,7 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { useUserDetails } from "@/lib/queries/use-swr";
-import UserDetails from "@/components/forms/user-details";
+import UserDetails from "@/components/form/user-details";
 
 const ProfilePage = () => {
   const { user } = useUserDetails()

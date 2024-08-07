@@ -11,7 +11,7 @@ import {
     TooltipTrigger,
 } from '@/components/ui/tooltip'
 import Link from 'next/link'
-import NewSpaceForm from '@/components/forms/new-space-form'
+import NewSpaceForm from '@/components/form/new-space-form'
 import Loading from '@/components/global/loading'
 import { FluentFolder24Regular } from '@/components/icons/folder-24-regular'
 import EditWorkspace from '@/app/(main)/workspace/[workspaceid]/_components/edit-workspace'
@@ -27,7 +27,7 @@ import {
     SelectSeparator,
 } from '@/components/ui/select'
 import { shortText } from '@/lib/utils'
-import NewWorkspaceForm from '@/components/forms/new-workspace-form'
+import NewWorkspaceForm from '@/components/form/new-workspace-form'
 import { usePathname, useRouter, useParams } from 'next/navigation'
 import { useUserDetails } from '@/lib/queries/use-swr'
 import { sidebar } from '@/lib/const'

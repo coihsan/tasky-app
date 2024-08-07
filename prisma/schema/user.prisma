@@ -1,0 +1,38 @@
+model User {
+  id             String          @id @default(uuid())
+  clerkId        String          @unique
+  full_name      String
+  username       String          @unique
+  email_user     String          @unique
+  bio            String?         @db.Text
+  preferences    String?
+  password       String?
+  imageUrl       String?
+  phone_number   String?         @default("000-0000-0000")
+  created_at     DateTime        @default(now())
+  updated_at     DateTime        @updatedAt
+  notification   Notification[]
+  permissions    Permissions[]
+  role           Role            @default(CREATOR)
+  position       String?
+  status_account Status          @default(ACTIVE)
+  user_workspace UserWorkspace[]
+  teams          UserTeams[]
+
+  @@index([clerkId])
+}
+
+
+model Permissions {
+  id          String    @id @default(uuid())
+  email_user       String
+  userId      String
+  access      Boolean
+  user        User      @relation(fields: [userId], references: [clerkId], onDelete: Cascade)
+  spaceId     String
+  space       Space[]
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@index([spaceId, email_user])
+}

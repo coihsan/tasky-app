@@ -1,5 +1,6 @@
 import { ThemeProvider } from "@/providers/theme-provider";
 import type { Metadata } from "next";
+import { ClerkProvider } from '@clerk/nextjs'
 import "./globals.css";
 import ModalProvider from "@/providers/modal-provider";
 import { Toaster } from "@/components/ui/toaster";

@@ -45,7 +45,7 @@ const Navigation = async () => {
           <Button variant={"ghost"}>
             <Link
               className="uppercase flex items-center gap-2"
-              href={user ? "/workspace" : "/workspace/sign-in"}
+              href={user ? "/workspace" : "/sign-in"}
             >
               {user ? "Dashboard" : "Sign In"}
               <ChevronRight />

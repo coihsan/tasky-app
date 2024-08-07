@@ -13,9 +13,11 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Icons } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 import Logo from "@/components/global/logo";
+import Loading from "@/components/global/loading";
+import { RiGoogleFill } from "@/components/icons/googleIcons";
+import { RiGithubFill } from "@/components/icons/githubicons";
 
 export default function SignUpPage() {
   return (
@@ -47,10 +49,10 @@ export default function SignUpPage() {
                           <Clerk.Loading scope="provider:github">
                             {(isLoading) =>
                               isLoading ? (
-                                <Icons.spinner className="size-4 animate-spin" />
+                                <Loading />
                               ) : (
                                 <>
-                                  <Icons.gitHub className="mr-2 size-4" />
+                                  <RiGithubFill />
                                   GitHub
                                 </>
                               )
@@ -68,10 +70,10 @@ export default function SignUpPage() {
                           <Clerk.Loading scope="provider:google">
                             {(isLoading) =>
                               isLoading ? (
-                                <Icons.spinner className="size-4 animate-spin" />
+                                <Loading />
                               ) : (
                                 <>
-                                  <Icons.google className="mr-2 size-4" />
+                                  <RiGoogleFill />
                                   Google
                                 </>
                               )
@@ -109,7 +111,7 @@ export default function SignUpPage() {
                           <Clerk.Loading>
                             {(isLoading) => {
                               return isLoading ? (
-                                <Icons.spinner className="size-4 animate-spin" />
+                                <Loading />
                               ) : (
                                 "Continue"
                               );
@@ -150,7 +152,7 @@ export default function SignUpPage() {
                           <Clerk.Loading>
                             {(isLoading) => {
                               return isLoading ? (
-                                <Icons.spinner className="size-4 animate-spin" />
+                                <Loading />
                               ) : (
                                 "Continue"
                               );
@@ -236,7 +238,7 @@ export default function SignUpPage() {
                             <Clerk.Loading>
                               {(isLoading) => {
                                 return isLoading ? (
-                                  <Icons.spinner className="size-4 animate-spin" />
+                                  <Loading />
                                 ) : (
                                   "Continue"
                                 );

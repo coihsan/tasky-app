@@ -1,0 +1,30 @@
+enum Role {
+  CREATOR
+  USER
+  ADMIN
+  VIEW
+}
+
+enum Status {
+  ACTIVE
+  INACTIVE
+}
+
+enum TaskStatus {
+  PENDING
+  INPROGRESS
+  COMPLETED
+  ARCHIVE
+}
+
+enum InvitationStatus {
+  ACCEPTED
+  REVOKED
+  PENDING
+}
+enum Icon {
+  ADD
+  EDIT
+  DELETE
+  Briefcase
+}

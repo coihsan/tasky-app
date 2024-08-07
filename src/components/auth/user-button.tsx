@@ -9,14 +9,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "../ui/button";
-import Image from "next/image";
 import Link from "next/link";
-import { SignOutButton, useAuth } from "@clerk/nextjs";
+import { SignOutButton } from "@clerk/nextjs";
 import { FluentPerson24Regular } from "../icons/person";
 import { FluentSettings24Regular } from "../icons/settings";
 import { FluentSignOut24Regular } from "../icons/sign-out";
 import { useUserDetails } from "@/lib/queries/use-swr";
-import { shortText } from "@/lib/utils";
 import {
   Avatar,
   AvatarFallback,

@@ -1,0 +1,13 @@
+model Media {
+  id          String   @id @default(uuid())
+  title       String?
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  type        String
+  description String?
+  link        String   @unique
+  spaceId     String
+  space       Space    @relation(fields: [spaceId], references: [id], onDelete: Cascade)
+
+  @@index([spaceId])
+}

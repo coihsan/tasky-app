@@ -1,0 +1,60 @@
+model Board {
+  id         String   @id @default(uuid())
+  title      String?
+  spaceId    String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  space      Space    @relation(fields: [spaceId], references: [id], onDelete: Cascade)
+  columns    Column[]
+}
+
+model Column {
+  id         String   @id @default(uuid())
+  name       String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  position   String
+  boardId    String
+  board      Board    @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  cards      Card[]
+}
+
+model Card {
+  id          String    @id @default(uuid())
+  title       String?
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  description String?
+  content     String?   @db.Text
+  columnId    String
+  column      Column    @relation(fields: [columnId], references: [id], onDelete: Cascade)
+  is_complete Boolean   @default(false)
+  sub_task    SubTask[]
+  tags        Tags[]
+
+  @@index([columnId])
+}
+
+model SubTask {
+  id          String     @id @default(uuid())
+  title       String?
+  content     String[]   @db.Text
+  is_complete Boolean    @default(false)
+  created_at  DateTime   @default(now())
+  updated_at  DateTime   @updatedAt
+  status      TaskStatus @default(INPROGRESS)
+  cardId      String
+  card        Card       @relation(fields: [cardId], references: [id], onDelete: Cascade)
+}
+
+model Tags {
+  id         String   @id @default(uuid())
+  name       String?
+  color      String?
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  cardId     String
+  card       Card     @relation(fields: [cardId], references: [id], onDelete: Cascade)
+
+  @@index([cardId])
+}

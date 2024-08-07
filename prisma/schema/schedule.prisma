@@ -1,0 +1,11 @@
+model Schedule {
+  id          String    @id @default(uuid())
+  title       String
+  description String
+  spaceId     String
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  space       Space     @relation(fields: [spaceId], references: [id], onDelete: Cascade)
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+}

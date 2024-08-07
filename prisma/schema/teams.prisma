@@ -1,0 +1,25 @@
+model Teams {
+  id          String      @id @default(uuid())
+  createdAt   DateTime    @default(now())
+  status      Status?     @default(ACTIVE)
+  workspaceId String
+  role        Role        @default(USER)
+  position    String
+  members     UserTeams[]
+  spaceId     String
+  workspace   Workspace   @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  space       Space[]
+
+  SpaceTeams SpaceTeams[]
+}
+
+model UserTeams {
+  teamId String
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+  team   Teams  @relation(fields: [teamId], references: [id])
+
+  @@id([userId, teamId])
+  @@index([userId])
+  @@index([teamId])
+}

@@ -1,0 +1,49 @@
+model Space {
+  id                     String              @id @default(uuid())
+  name                   String
+  description            String?
+  created_at             DateTime            @default(now())
+  updated_at             DateTime            @updatedAt
+  dueDate                DateTime?           @default(now())
+  status                 TaskStatus?
+  Invitation             Invitation[]
+  notification           Notification[]
+  workspaceId            String
+  workspace              Workspace           @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  Schedule               Schedule[]
+  teams                  SpaceTeams[]
+  permissions            Permissions[]
+  workflows              Workflows[]
+  board                  Board[]
+  funnel                 Funnel[]
+  media                  Media[]
+  memos                  Memos[]
+  sidebar_header_options SpaceHeaderOption[]
+  Teams                  Teams[]
+
+  @@index([workspaceId])
+}
+
+model SpaceTeams {
+  spaceId String
+  teamId  String
+  space   Space  @relation(fields: [spaceId], references: [id])
+  team    Teams  @relation(fields: [teamId], references: [id])
+
+  @@id([spaceId, teamId])
+  @@index([spaceId])
+  @@index([teamId])
+}
+
+model SpaceHeaderOption {
+  id         String   @id @default(uuid())
+  name       String?
+  link       String   @default("#")
+  icon       Icon     @default(Briefcase)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  spaceId    String
+  space      Space    @relation(fields: [spaceId], references: [id], onDelete: Cascade)
+
+  @@index([spaceId])
+}

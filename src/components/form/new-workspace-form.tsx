@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button'
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
@@ -24,14 +23,12 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Textarea } from '../ui/textarea'
 import { NewWorkspaceSchema } from '@/lib/schema'
-import { createNewWorkspace } from '@/lib/queries'
-import { redirect, useRouter } from 'next/navigation'
+import { createNewWorkspace } from '@/app/(main)/workspace/[workspaceid]/_action/workspace-action'
+import { useRouter } from 'next/navigation'
 import { useModal } from '@/providers/modal-provider'
 import Loading from '../global/loading'
 import Uploader from './Uploader'
 import { useToast } from '../ui/use-toast'
-import { v4 } from 'uuid'
-import { User } from '@prisma/client'
 
 type FormValues = z.infer<typeof NewWorkspaceSchema>;
 

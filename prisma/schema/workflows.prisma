@@ -1,0 +1,13 @@
+model Workflows {
+  id         String   @id @default(uuid())
+  nodes      String?
+  edges      String?
+  name       String
+  flow_path  String?
+  cron_path  String?
+  publish    Boolean? @default(false)
+  spaceId    String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  space      Space    @relation(fields: [spaceId], references: [id], onDelete: Cascade)
+}

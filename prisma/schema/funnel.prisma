@@ -1,0 +1,15 @@
+model Funnel {
+  id          String   @id @default(uuid())
+  title       String?
+  content     String?  @db.Text
+  steps       String[]
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  description String?
+  published   Boolean  @default(false)
+  spaceId     String
+  userId      String
+  space       Space    @relation(fields: [spaceId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}

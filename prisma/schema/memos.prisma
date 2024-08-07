@@ -1,0 +1,14 @@
+model Memos {
+  id          String   @id @default(uuid())
+  title       String?
+  description String?
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  content     String   @db.Text
+  published   Boolean  @default(false)
+  spaceId     String
+  userId      String
+  space       Space    @relation(fields: [spaceId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
